@@ -1,0 +1,16 @@
+{
+  "name": "livre_or",
+  "version": "1.0.0",
+  "description": "My first web application in nodejs with  express",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "MBOBDA AYMAR IVAN <aymarmbobda1597@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.4"
+  }
+}
