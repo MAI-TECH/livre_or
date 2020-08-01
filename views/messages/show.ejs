@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../fragments/head.ejs", {title: "LivreOr"}); %>
+</head>
+
+<body>
+    <%- include("../fragments/navbar.ejs"); %>
+
+    <div class="ui main container">
+
+        <% if (locals.flash && locals.flash.error) { %>
+        <div class="ui negative message">
+            <%- flash.error %>
+        </div>
+        <% } %>
+        <% if (locals.flash && locals.flash.success) { %>
+        <div class="ui positive message">
+            <%- flash.success %>
+        </div>
+        <% } %>
+
+        <div class="ui comments">
+            <div class="comment">
+                <a class="avatar" href="/message/<%= message.id %>">
+                    <img src="/assets/images/user.png" alt="avatar" />
+                </a>
+                <div class="content">
+                    <div class="metadata">
+                        <div class="date">
+                            <%= message.created_at.fromNow() %>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <%= message.content %>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

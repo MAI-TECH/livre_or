@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../fragments/head.ejs", {title: "LivreOr"}); %>
+</head>
+
+<body>
+    <%- include("../fragments/navbar.ejs"); %>
+
+    <div class="ui main container">
+
+        <% if (locals.flash && locals.flash.error) { %>
+        <div class="ui negative message">
+            <%- flash.error %>
+        </div>
+        <% } %>
+        <% if (locals.flash && locals.flash.success) { %>
+        <div class="ui positive message">
+            <%- flash.success %>
+        </div>
+        <% } %>
+
+        <form action="/" method="POST" class="ui form">
+            <div class="field">
+                <label for="message">Message</label>
+                <textarea name="message" id="message"></textarea>
+            </div>
+            <button type="submit" class="ui blue labeled submit icon button">
+                <i class="icon edit"></i>
+                Envoyer
+            </button>
+        </form>
+
+        <div class="ui comments">
+            <h3 class="ui dividing header">Commantaires</h3>
+            <% for (message of messages) { %>
+            <div class="comment">
+                <a class="avatar" href="/message/<%= message.id %>">
+                    <img src="/assets/images/user.png" alt="avatar" />
+                </a>
+                <div class="content">
+                    <div class="metadata">
+                        <div class="date">
+                            <%= message.created_at.fromNow() %>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <%= message.content %>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+    </div>
+</body>
+
+</html>
